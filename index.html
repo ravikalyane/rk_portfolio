@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ravi Kalyane — Senior Full-Stack Developer</title>
+<meta name="description" content="Ravi Kalyane — Senior Full-Stack Developer. Architecture, integrations, IOT & GRC systems, security and audit discipline.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAFAF8;
+    --paper-alt: #F2F1EC;
+    --ink: #1A1A1A;
+    --muted: #5B5F52;
+    --accent: #8B2E1F;
+    --rule: #E5E3DC;
+    --serif: 'Fraunces', serif;
+    --sans: 'Inter', sans-serif;
+    --transition: 0.25s ease;
+  }
+
+  [data-theme="dark"] {
+    --paper: #16171A;
+    --paper-alt: #1D1E22;
+    --ink: #EDECE6;
+    --muted: #9A9C8F;
+    --accent: #D4694F;
+    --rule: #2C2D30;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    transition: background var(--transition), color var(--transition);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    min-height: 100vh;
+  }
+
+  /* ---- Left index spine ---- */
+  .spine {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0;
+    font-family: var(--sans);
+  }
+
+  .spine-mark {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 500;
+    writing-mode: vertical-rl;
+    letter-spacing: 0.04em;
+  }
+
+  .spine-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: center;
+  }
+
+  .spine-nav a {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    writing-mode: vertical-rl;
+    transition: color var(--transition);
+    position: relative;
+    padding: 4px 0;
+  }
+
+  .spine-nav a:hover, .spine-nav a.active { color: var(--ink); }
+
+  .spine-nav a.active::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    transition: border-color var(--transition), color var(--transition);
+  }
+  .theme-toggle:hover { color: var(--ink); border-color: var(--ink); }
+  .theme-toggle svg { width: 15px; height: 15px; }
+
+  /* ---- Main content ---- */
+  main { padding: 0 8vw 0 6vw; max-width: 1100px; }
+
+  section {
+    padding: 120px 0 100px;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--muted);
+  }
+
+  /* Hero */
+  #hero { padding-top: 100px; }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-role {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    color: var(--muted);
+    margin-top: 20px;
+    max-width: 640px;
+    font-weight: 400;
+  }
+
+  .hero-role em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  .hero-meta {
+    margin-top: 56px;
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta div { font-size: 0.85rem; }
+  .hero-meta .label { color: var(--muted); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .hero-meta .value { font-family: var(--serif); font-size: 1.2rem; }
+
+  /* About */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 60px;
+  }
+
+  .about-title {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  .about-body p {
+    max-width: 620px;
+    margin-bottom: 22px;
+    color: var(--ink);
+    font-size: 1.02rem;
+  }
+  .about-body p:last-child { margin-bottom: 0; }
+
+  /* Skills */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 60px;
+    margin-top: 50px;
+  }
+
+  .skill-group h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .skill-list { display: flex; flex-wrap: wrap; gap: 8px 10px; }
+
+  .skill-list span {
+    font-size: 0.85rem;
+    color: var(--muted);
+    padding: 6px 0;
+  }
+  .skill-list span::after { content: '·'; margin-left: 10px; color: var(--rule); }
+  .skill-list span:last-child::after { content: none; }
+
+  /* Work / domains */
+  .work-list { margin-top: 40px; }
+
+  .work-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    padding: 36px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .work-item:last-child { border-bottom: 1px solid var(--rule); }
+
+  .work-domain {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .work-desc { max-width: 640px; color: var(--muted); font-size: 0.98rem; }
+  .work-desc strong { color: var(--ink); font-weight: 600; }
+
+  /* Elsewhere */
+  .elsewhere-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    margin-top: 40px;
+    border: 1px solid var(--rule);
+  }
+
+  .elsewhere-item {
+    background: var(--paper);
+    padding: 32px 36px;
+    transition: background var(--transition);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 140px;
+  }
+  .elsewhere-item:hover { background: var(--paper-alt); }
+
+  .elsewhere-item .name {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+  }
+  .elsewhere-item .desc { color: var(--muted); font-size: 0.85rem; margin-top: 8px; }
+  .elsewhere-item .arrow { font-size: 1.3rem; align-self: flex-end; color: var(--accent); }
+
+  footer {
+    padding: 40px 0 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  /* Mobile */
+  @media (max-width: 860px) {
+    .wrap { grid-template-columns: 1fr; }
+    .spine {
+      position: fixed;
+      bottom: 0;
+      top: auto;
+      width: 100%;
+      height: auto;
+      flex-direction: row;
+      border-right: none;
+      border-top: 1px solid var(--rule);
+      background: var(--paper);
+      padding: 14px 20px;
+      z-index: 10;
+    }
+    .spine-mark { display: none; }
+    .spine-nav { flex-direction: row; gap: 20px; }
+    .spine-nav a { writing-mode: horizontal-tb; }
+    main { padding: 0 6vw 90px; }
+    .about-grid, .skills-grid, .work-item, .elsewhere-grid { grid-template-columns: 1fr; }
+    .work-item { gap: 12px; }
+    .hero-meta { gap: 32px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <aside class="spine">
+    <div class="spine-mark">RK</div>
+    <nav class="spine-nav" id="spineNav">
+      <a href="#hero" class="active">Index</a>
+      <a href="#about">About</a>
+      <a href="#skills">Stack</a>
+      <a href="#work">Domains</a>
+      <a href="#elsewhere">Elsewhere</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+      </svg>
+    </button>
+  </aside>
+
+  <main>
+    <section id="hero">
+      <div class="eyebrow">Ravi Kalyane · Mumbai, India</div>
+      <h1 class="hero-name">Ravi<br>Kalyane</h1>
+      <p class="hero-role">Senior full-stack developer working across <em>architecture</em>, <em>integrations</em>, and <em>systems that have to hold up under audit</em>.</p>
+      <div class="hero-meta">
+        <div>
+          <div class="label">Experience</div>
+          <div class="value">6+ Years</div>
+        </div>
+        <div>
+          <div class="label">Focus</div>
+          <div class="value">Backend &amp; Architecture</div>
+        </div>
+        <div>
+          <div class="label">Based in</div>
+          <div class="value">Mumbai, IN</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="eyebrow">About</div>
+      <div class="about-grid">
+        <h2 class="about-title">I build software that's meant to still be running in three years.</h2>
+        <div class="about-body">
+          <p>My work sits at the intersection of backend architecture, third-party integrations, and the less glamorous disciplines that make systems trustworthy — security, auditability, and upgrade paths that don't break production.</p>
+          <p>I think of good engineering as a series of small, defensible decisions: how data is modeled, what gets tracked versus what gets computed, where a system should be flexible and where it shouldn't. I'd rather ship something narrow and correct than broad and fragile.</p>
+          <p>Most of my recent work has involved IOT platforms, GRC (governance, risk & compliance) tooling, and integration-heavy systems — connecting third-party services cleanly, planning application upgrades without downtime, and making architectural calls that hold up when the stakes are compliance, not just uptime.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="eyebrow">Stack</div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Backend &amp; Architecture</h3>
+          <div class="skill-list">
+            <span>Python</span><span>Django</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Cloud &amp; Infrastructure</h3>
+          <div class="skill-list">
+            <span>AWS EC2</span><span>S3</span><span>CloudFront</span><span>RDS</span><span>Nginx</span><span>Gunicorn</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Frontend</h3>
+          <div class="skill-list">
+            <span>React</span><span>Tailwind CSS</span><span>Responsive &amp; mobile-first UI</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Systems &amp; Practice</h3>
+          <div class="skill-list">
+            <span>Third-party integrations</span><span>Security &amp; audit readiness</span><span>Application upgrades</span><span>Analytics &amp; event tracking design</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="eyebrow">Domains</div>
+      <div class="work-list">
+        <div class="work-item">
+          <div class="work-domain">IOT Systems</div>
+          <div class="work-desc">Architecture and backend work for connected-device platforms — <strong>data ingestion, device state management, and integration with third-party hardware and monitoring services.</strong></div>
+        </div>
+        <div class="work-item">
+          <div class="work-domain">GRC Platforms</div>
+          <div class="work-desc">Governance, risk, and compliance tooling where <strong>correctness and auditability matter as much as functionality</strong> — designing systems that can withstand scrutiny, not just usage.</div>
+        </div>
+        <div class="work-item">
+          <div class="work-domain">Integrations Specialist</div>
+          <div class="work-desc">Connecting and maintaining <strong>third-party service integrations</strong> across payment, communication, and data providers — handling failure modes, rate limits, and versioning gracefully.</div>
+        </div>
+        <div class="work-item">
+          <div class="work-domain">Security &amp; Audit</div>
+          <div class="work-desc">Treating security and audit trail design as <strong>first-class architectural concerns</strong> — access control, data separation, and traceability built in from the schema up.</div>
+        </div>
+        <div class="work-item">
+          <div class="work-domain">Application Upgrades &amp; Planning</div>
+          <div class="work-desc">Planning and executing <strong>version upgrades and architectural migrations</strong> on live systems — sequencing changes to minimize risk and downtime.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="elsewhere">
+      <div class="eyebrow">Elsewhere</div>
+      <div class="elsewhere-grid">
+        <a class="elsewhere-item" href="https://clientlink.in/ravikalyane" target="_blank" rel="noopener">
+          <div>
+            <div class="name">Clientlink</div>
+            <div class="desc">Professional profile — consulting, interview prep &amp; more</div>
+          </div>
+          <div class="arrow">→</div>
+        </a>
+        <a class="elsewhere-item" href="#" target="_blank" rel="noopener">
+          <div>
+            <div class="name">LinkedIn</div>
+            <div class="desc">Professional background &amp; network</div>
+          </div>
+          <div class="arrow">→</div>
+        </a>
+        <a class="elsewhere-item" href="#" target="_blank" rel="noopener">
+          <div>
+            <div class="name">GitHub</div>
+            <div class="desc">Code &amp; open work</div>
+          </div>
+          <div class="arrow">→</div>
+        </a>
+        <a class="elsewhere-item" href="mailto:hello@ravikalyane.com">
+          <div>
+            <div class="name">Email</div>
+            <div class="desc">hello@ravikalyane.com</div>
+          </div>
+          <div class="arrow">→</div>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <div>Ravi Kalyane © 2026</div>
+      <div>Mumbai, India</div>
+    </footer>
+  </main>
+</div>
+
+<script>
+  // Theme toggle
+  const toggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const stored = null; // no localStorage per artifact constraints; session-only via JS var
+  let isDark = false;
+
+  toggle.addEventListener('click', () => {
+    isDark = !isDark;
+    root.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  });
+
+  // Scroll spy for spine nav
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.spine-nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(sec => observer.observe(sec));
+</script>
+
+</body>
+</html>
